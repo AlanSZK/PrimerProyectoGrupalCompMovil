@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "630755167971",
+    "project_id": "proyectogrupalcompmovil-4c4d2",
+    "storage_bucket": "proyectogrupalcompmovil-4c4d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630755167971:android:cb562f64a17bb498beffd6",
+        "android_client_info": {
+          "package_name": "com.example.primerproyectogrupalcompmovil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630755167971-atru4fnfr7s5nvnmtomfisafntgnbbde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyHYDGHnPmwneRj_3SfLsLEUMcjyIZ4aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630755167971-atru4fnfr7s5nvnmtomfisafntgnbbde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
