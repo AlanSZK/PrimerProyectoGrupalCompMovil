@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.primerproyectogrupalcompmovil.modelos.Mensaje;
@@ -16,7 +15,8 @@ import com.example.primerproyectogrupalcompmovil.modelos.Mensaje;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
+    private static final int SIGN_IN_REQUEST_CODE = 1;
     RecyclerView rvChat;
     List<Mensaje> listaMensajes = new ArrayList<>();
 
@@ -28,17 +28,70 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setTitle("Wasapp");
+
+        mostrarChat();
+
+        /*
+        if(FirebaseAuth.getInstance().getCurrentUser() == null) {
+            // Empezar actividad de Login
+            startActivityForResult(
+                    AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .build(),
+                    SIGN_IN_REQUEST_CODE
+            );
+        }
+        else {
+            // Usuario Logueado, saludo
+            Toast.makeText(this,
+                    "Bienvenido " + FirebaseAuth.getInstance()
+                            .getCurrentUser()
+                            .getDisplayName(),
+                    Toast.LENGTH_LONG)
+                    .show();
+
+            // Mostrar chat
+            mostrarChat();
+        }
+
+        */
+    }
+    /*
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == SIGN_IN_REQUEST_CODE) {
+            if(resultCode == RESULT_OK) {
+                Toast.makeText(this,
+                        "Successfully signed in. Welcome!",
+                        Toast.LENGTH_LONG)
+                        .show();
+                mostrarChat();
+            } else {
+                Toast.makeText(this,
+                        "We couldn't sign you in. Please try again later.",
+                        Toast.LENGTH_LONG)
+                        .show();
+
+                // Close the app
+                finish();
+            }
+        }
+
+    }
+    */
+
+    private void mostrarChat() {
 
         listaMensajes.add(new Mensaje("Cris","Hola Gente"));
         listaMensajes.add(new Mensaje("Javier","Wena xd"));
 
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-        setTitle("Wasapp");
-
+        setContentView(R.layout.activity_chat);
 
 
         rvChat = findViewById(R.id.rvChat);
@@ -48,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        }
+
+    }
 
     private class AdaptadorChat extends RecyclerView.Adapter<AdaptadorChat.AdaptadorChatHolder>{
 
