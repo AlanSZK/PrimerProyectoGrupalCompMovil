@@ -29,6 +29,8 @@ public class SignupActivity extends AppCompatActivity {
 
         etEmailSignup = findViewById(R.id.etEmailSignup);
         etEmailContrasenaSignup = findViewById((R.id.etContrasenaSignup));
+
+        setTitle("Registrarse");
     }
 
     public void registrar(View view) {
@@ -39,13 +41,21 @@ public class SignupActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "Usuario creado con éxito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Registro realizado con éxito!", Toast.LENGTH_SHORT).show();
                         finish();
 
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Email o Contraseña incorrectos", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
+        else{
+            Toast.makeText(getApplicationContext(), "Email o Contraseña incorrectos", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }
 

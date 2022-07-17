@@ -47,8 +47,15 @@ public class LoginActivity extends AppCompatActivity {
                     if(task.isSuccessful())
                     {
                         FirebaseUser user = auth.getCurrentUser();
+                        Toast.makeText(getApplicationContext(), "Datos correctos", Toast.LENGTH_SHORT).show();
 
+                        Intent intent = new Intent(getApplicationContext(),GruposActivity.class);
 
+                        startActivity(intent);
+
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Email o Contraseña incorrectos", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginBottom="184dp"
         android:onClick="aRegistrar"
         android:text="No tengo cuenta"
         android:textColor="@color/purple_700"
