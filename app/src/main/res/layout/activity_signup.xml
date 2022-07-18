@@ -30,6 +30,15 @@
             android:inputType="textEmailAddress" />
 
         <EditText
+            android:id="@+id/etUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="20dp"
+            android:hint="Nombre de usuario" />
+
+        <EditText
             android:id="@+id/etContrasenaSignup"
             android:layout_width="match_parent"
             android:layout_height="48dp"
