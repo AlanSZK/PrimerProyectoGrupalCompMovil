@@ -18,12 +18,16 @@ import com.example.primerproyectogrupalcompmovil.modelos.Mensaje;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ChatActivity extends AppCompatActivity
 {
     private Toolbar ChattoolBar;
     private ImageButton SendMessageButton, SendImagefileButton;
     private EditText userMessageInput;
     private RecyclerView userMessagesList;
+    private TextView receiverName;
+    private CircleImageView receiverProfileImage;
 
 
     @Override
@@ -40,6 +44,9 @@ public class ChatActivity extends AppCompatActivity
 
         ChattoolBar = (Toolbar) findViewById(R.id.chat_bar_layout);
         setSupportActionBar(ChattoolBar);
+
+        receiverName = (TextView) findViewById(R.id.custom_profile_name);
+        receiverProfileImage = (CircleImageView) findViewById(R.id.custom_profile_image);
 
         SendMessageButton = (ImageButton) findViewById(R.id.send_message_button);
         SendImagefileButton = (ImageButton) findViewById(R.id.send_image_file_button);
