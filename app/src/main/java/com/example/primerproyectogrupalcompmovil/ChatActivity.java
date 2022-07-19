@@ -34,57 +34,8 @@ public class ChatActivity extends AppCompatActivity {
 
         mostrarChat();
 
-        /*
-        if(FirebaseAuth.getInstance().getCurrentUser() == null) {
-            // Empezar actividad de Login
-            startActivityForResult(
-                    AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .build(),
-                    SIGN_IN_REQUEST_CODE
-            );
-        }
-        else {
-            // Usuario Logueado, saludo
-            Toast.makeText(this,
-                    "Bienvenido " + FirebaseAuth.getInstance()
-                            .getCurrentUser()
-                            .getDisplayName(),
-                    Toast.LENGTH_LONG)
-                    .show();
-
-            // Mostrar chat
-            mostrarChat();
-        }
-
-        */
-    }
-    /*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == SIGN_IN_REQUEST_CODE) {
-            if(resultCode == RESULT_OK) {
-                Toast.makeText(this,
-                        "Successfully signed in. Welcome!",
-                        Toast.LENGTH_LONG)
-                        .show();
-                mostrarChat();
-            } else {
-                Toast.makeText(this,
-                        "We couldn't sign you in. Please try again later.",
-                        Toast.LENGTH_LONG)
-                        .show();
-
-                // Close the app
-                finish();
-            }
-        }
 
     }
-    */
 
     private void mostrarChat() {
 

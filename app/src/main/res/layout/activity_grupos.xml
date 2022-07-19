@@ -10,6 +10,7 @@
         android:layout_width="409dp"
         android:layout_height="628dp"
         android:layout_marginTop="56dp"
+        android:id="@+id/listaGrupos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
