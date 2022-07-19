@@ -218,7 +218,6 @@ public class NuevoGrupoActivity extends AppCompatActivity {
                     }
 
                 }
-
                 map.put("miembros", listaCheck);
 
 
