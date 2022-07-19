@@ -2,12 +2,15 @@ package com.example.primerproyectogrupalcompmovil;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.primerproyectogrupalcompmovil.modelos.Mensaje;
@@ -15,17 +18,46 @@ import com.example.primerproyectogrupalcompmovil.modelos.Mensaje;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatActivity extends AppCompatActivity {
-    private static final int SIGN_IN_REQUEST_CODE = 1;
+public class ChatActivity extends AppCompatActivity
+{
+    private Toolbar ChattoolBar;
+    private ImageButton SendMessageButton, SendImagefileButton;
+    private EditText userMessageInput;
+    private RecyclerView userMessagesList;
+
+
+    @Override
+    protected void  onCreate (Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+
+        InitializeFields();
+
+    }
+
+    private void InitializeFields() {
+
+        ChattoolBar = (Toolbar) findViewById(R.id.chat_bar_layout);
+        setSupportActionBar(ChattoolBar);
+
+        SendMessageButton = (ImageButton) findViewById(R.id.send_message_button);
+        SendImagefileButton = (ImageButton) findViewById(R.id.send_image_file_button);
+        userMessageInput = (EditText) findViewById(R.id.input_message);
+
+    }
+
+
+
+    /*private static final int SIGN_IN_REQUEST_CODE = 1;
     RecyclerView rvChat;
     List<Mensaje> listaMensajes = new ArrayList<>();
 
     TextView tvNombre;
     TextView tvFecha;
     TextView tvTexto;
-
-
-
+    */
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +89,8 @@ public class ChatActivity extends AppCompatActivity {
             mostrarChat();
         }
 
-        */
-    }
+
+    }*/
     /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
@@ -85,7 +117,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
     */
-
+    /*
     private void mostrarChat() {
 
         listaMensajes.add(new Mensaje("Cris","Hola Gente"));
@@ -149,7 +181,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
     }
-
+    */
 
 
 }
