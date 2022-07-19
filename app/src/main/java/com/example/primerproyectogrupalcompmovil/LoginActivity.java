@@ -19,9 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmailLogin,etContrasenaLogin;
-    public static String authUuid;
 
-    private FirebaseAuth auth;
+    public static FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +50,11 @@ public class LoginActivity extends AppCompatActivity {
                         FirebaseUser user = auth.getCurrentUser();
                         Toast.makeText(getApplicationContext(), "Datos correctos", Toast.LENGTH_SHORT).show();
 
-                        authUuid = user.getUid();
+                        String uuid = user.getUid();
+
 
                         Intent intent = new Intent(getApplicationContext(),GruposActivity.class);
-
+                        intent.putExtra("email",etEmailLogin.getText().toString());
                         startActivity(intent);
 
                     }

@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,16 +15,19 @@ import androidx.appcompat.widget.Toolbar;
 public class GruposActivity extends AppCompatActivity {
 
     ListView listaGrupos;
+    String email;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_grupos);
-
         setTitle("Grupos");
+
+        Bundle extras = getIntent().getExtras();
+        email = extras.getString("email");
+
 
     }
 
@@ -40,6 +44,7 @@ public class GruposActivity extends AppCompatActivity {
         switch(id){
             case R.id.action_agregar_grupo:
                 Intent intent = new Intent(getApplicationContext(),NuevoGrupoActivity.class);
+                intent.putExtra("email",email);
                 startActivity(intent);
             default:
                 break;

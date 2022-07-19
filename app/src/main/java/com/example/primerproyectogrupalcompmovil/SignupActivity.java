@@ -47,6 +47,8 @@ public class SignupActivity extends AppCompatActivity {
         etUsuario = findViewById(R.id.etUsuario);
 
         setTitle("Registrarse");
+
+
     }
 
     public void registrar(View view) {

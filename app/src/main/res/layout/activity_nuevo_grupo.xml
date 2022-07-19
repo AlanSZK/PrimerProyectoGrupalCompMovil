@@ -35,10 +35,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPersonas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="300dp" />
 
         <Button
-            android:id="@+id/btnRegistrar"
+            android:id="@+id/btnCrear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

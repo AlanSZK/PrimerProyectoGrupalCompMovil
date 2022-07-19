@@ -47,7 +47,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/btnRegistrar"
+            android:id="@+id/btnCrear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
