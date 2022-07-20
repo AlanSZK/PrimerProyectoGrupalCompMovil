@@ -1,25 +1,29 @@
 package com.example.primerproyectogrupalcompmovil;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.primerproyectogrupalcompmovil.modelos.Mensaje;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,7 +35,10 @@ public class ChatActivity extends AppCompatActivity
     private RecyclerView userMessagesList;
     private TextView receiverName;
     private CircleImageView receiverProfileImage;
-    private String messageRecieverID, messageRecieverName;
+    private String messageReceiverID, messageReceiverName, messageSenderID;
+    private DatabaseReference Rootref;
+    private DataSnapshot dataSnapchot;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -40,10 +47,74 @@ public class ChatActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        messageRecieverID = getIntent().getExtras().get("visit_user_id").toString();
-        messageRecieverName = getIntent().getExtras().get("userName").toString();
+        mAuth = FirebaseAuth.getInstance();
+        messageSenderID = mAuth.getCurrentUser().getUid();
+
+        Rootref = FirebaseDatabase.getInstance().getReference();
+
+        messageReceiverID = getIntent().getExtras().get("visit_user_id").toString();
+        messageReceiverName = getIntent().getExtras().get("userName").toString();
 
         InitializeFields();
+
+        DisplayReceiverInfo();
+
+        SendMessageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                SendMessage();
+
+            }
+        });
+
+    }
+
+    private void SendMessage()
+    {
+
+        String messageText = userMessageInput.getText().toString();
+
+        if (TextUtils.isEmpty(messageText))
+        {
+            Toast.makeText(this, "PorFavor Escriba su mensaje...",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            String message_sender_red = "Messages/" + messageSenderID + "/" + messageReceiverID;
+            String message_receiver_red = "Messages/" + messageReceiverID + "/" + messageSenderID;
+
+            DatabaseReference user_message_key = Rootref.child("Messages").child(messageSenderID)
+                    .child(messageReceiverID).push();
+            String message_push_id = user_message_key.getKey();
+
+
+
+        }
+
+    }
+
+    private void DisplayReceiverInfo() {
+
+        receiverName.setText(messageReceiverName);
+        Rootref.child("Users").child(messageReceiverID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (dataSnapchot.exists())
+                {
+                    final String profileImage = dataSnapchot.child("profileimage").getValue().toString();
+                    Picasso.get().load(profileImage).placeholder(R.drawable.profile).into(receiverProfileImage);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
