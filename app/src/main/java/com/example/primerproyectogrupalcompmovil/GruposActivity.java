@@ -10,6 +10,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class GruposActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-
+    private RecyclerView myGroupList;
 
 
     @Override
@@ -29,6 +31,13 @@ public class GruposActivity extends AppCompatActivity {
         setTitle("Grupos");
 
         mAuth = FirebaseAuth.getInstance();
+
+        myGroupList = (RecyclerView) findViewById(R.id.groups_list);
+        myGroupList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        myGroupList.setLayoutManager(linearLayoutManager);
 
     }
 

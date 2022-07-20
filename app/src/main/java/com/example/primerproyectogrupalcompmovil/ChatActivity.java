@@ -17,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +27,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+
+
+
 
 public class ChatActivity extends AppCompatActivity
 {
@@ -35,7 +45,7 @@ public class ChatActivity extends AppCompatActivity
     private RecyclerView userMessagesList;
     private TextView receiverName;
     private CircleImageView receiverProfileImage;
-    private String messageReceiverID, messageReceiverName, messageSenderID;
+    private String messageReceiverID, messageReceiverName, messageSenderID,saveCurrentDate,saveCurrentTime;
     private DatabaseReference Rootref;
     private DataSnapshot dataSnapchot;
     private FirebaseAuth mAuth;
@@ -82,15 +92,50 @@ public class ChatActivity extends AppCompatActivity
         }
         else
         {
-            String message_sender_red = "Messages/" + messageSenderID + "/" + messageReceiverID;
-            String message_receiver_red = "Messages/" + messageReceiverID + "/" + messageSenderID;
+            String message_sender_ref = "Messages/" + messageSenderID + "/" + messageReceiverID;
+            String message_receiver_ref = "Messages/" + messageReceiverID + "/" + messageSenderID;
 
             DatabaseReference user_message_key = Rootref.child("Messages").child(messageSenderID)
                     .child(messageReceiverID).push();
             String message_push_id = user_message_key.getKey();
 
 
+            Calendar calForDate = Calendar.getInstance();
+            SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
+            saveCurrentDate = currentDate.format(calForDate.getTime());
 
+            Calendar calForTime = Calendar.getInstance();
+            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm aa");
+            saveCurrentTime = currentTime.format(calForDate.getTime());
+
+            Map messageTextBody = new HashMap();
+                messageTextBody.put("message", messageText);
+                messageTextBody.put("time", saveCurrentTime);
+                messageTextBody.put("date", saveCurrentDate);
+                messageTextBody.put("type", "text");
+                messageTextBody.put("from", messageSenderID);
+
+            Map messageBodyDetails = new HashMap();
+                messageBodyDetails.put(message_sender_ref + "/" + message_push_id, messageTextBody);
+                messageBodyDetails.put(message_receiver_ref + "/" + message_push_id, messageTextBody);
+
+            Rootref.updateChildren(messageBodyDetails).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task)
+                {
+                    if (task.isSuccessful())
+                    {
+                        Toast.makeText(ChatActivity.this,"Mensaje Enviado Exitosamente",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        String message = task.getException().getMessage();
+                        Toast.makeText(ChatActivity.this, "Error " + message, Toast.LENGTH_SHORT).show();
+                    }
+
+                    userMessageInput.setText("");
+                }
+            });
         }
 
     }
