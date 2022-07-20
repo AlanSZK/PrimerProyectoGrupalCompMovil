@@ -18,8 +18,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
 
-    EditText etEmailSignup;
-    EditText etEmailContrasenaSignup;
+    private EditText etEmailSignup;
+    private EditText etEmailContrasenaSignup;
 
 
     @Override
@@ -37,7 +37,8 @@ public class SignupActivity extends AppCompatActivity {
         if (!etEmailSignup.getText().toString().isEmpty() && !etEmailContrasenaSignup.getText().toString().isEmpty()) {
             auth = FirebaseAuth.getInstance();
 
-            auth.getInstance().createUserWithEmailAndPassword(etEmailSignup.getText().toString(), etEmailContrasenaSignup.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            auth.getInstance().createUserWithEmailAndPassword(etEmailSignup.getText().toString(),
+                    etEmailContrasenaSignup.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {

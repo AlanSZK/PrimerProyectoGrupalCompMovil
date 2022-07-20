@@ -41,7 +41,9 @@ public class LoginActivity extends AppCompatActivity {
         if(!etEmailLogin.getText().toString().isEmpty()&&!etContrasenaLogin.getText().toString().isEmpty()){
             auth = FirebaseAuth.getInstance();
 
-            auth.getInstance().signInWithEmailAndPassword(etEmailLogin.getText().toString(),etContrasenaLogin.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            auth.getInstance().signInWithEmailAndPassword(etEmailLogin.getText().toString(),
+                    etContrasenaLogin.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+            {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful())
