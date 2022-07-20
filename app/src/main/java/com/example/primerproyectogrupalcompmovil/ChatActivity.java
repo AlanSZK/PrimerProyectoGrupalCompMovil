@@ -1,12 +1,15 @@
 package com.example.primerproyectogrupalcompmovil;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -28,6 +31,7 @@ public class ChatActivity extends AppCompatActivity
     private RecyclerView userMessagesList;
     private TextView receiverName;
     private CircleImageView receiverProfileImage;
+    private String messageRecieverID, messageRecieverName;
 
 
     @Override
@@ -35,6 +39,9 @@ public class ChatActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        messageRecieverID = getIntent().getExtras().get("visit_user_id").toString();
+        messageRecieverName = getIntent().getExtras().get("userName").toString();
 
         InitializeFields();
 
@@ -44,6 +51,14 @@ public class ChatActivity extends AppCompatActivity
 
         ChattoolBar = (Toolbar) findViewById(R.id.chat_bar_layout);
         setSupportActionBar(ChattoolBar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+        LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View action_bar_view = layoutInflater.inflate(R.layout.chat_custom_bar, null);
+        actionBar.setCustomView(action_bar_view);
+
 
         receiverName = (TextView) findViewById(R.id.custom_profile_name);
         receiverProfileImage = (CircleImageView) findViewById(R.id.custom_profile_image);
