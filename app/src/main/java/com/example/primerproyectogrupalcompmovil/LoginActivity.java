@@ -58,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         String uuid = user.getUid();
 
+                        Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
+
                         obtenerNombreUsuario(etEmailLogin.getText().toString());
 
                     }

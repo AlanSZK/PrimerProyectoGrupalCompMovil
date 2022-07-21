@@ -9,6 +9,17 @@
     android:background="@color/white"
     tools:visibility="visible">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="450dp"
+        android:layout_height="800dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/fondo_login"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +35,7 @@
             android:id="@+id/imageView"
             android:layout_width="225dp"
             android:layout_height="271dp"
-            app:srcCompat="@android:mipmap/sym_def_app_icon" />
+            app:srcCompat="@drawable/icono_login3" />
 
         <EditText
             android:id="@+id/etEmailLogin"
@@ -33,6 +44,9 @@
             android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="Email"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -41,6 +55,9 @@
             android:layout_height="48dp"
             android:ems="10"
             android:hint="Contraseña"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:inputType="textPassword" />
 
         <Button
@@ -48,23 +65,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Ingresar"
-            android:onClick="ingresar"/>
-    </LinearLayout>
+            app:backgroundTint="@null"
+            android:background="@drawable/custom_button"
+            android:onClick="ingresar"
+            android:text="Iniciar Sesión" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="184dp"
-        android:onClick="aRegistrar"
-        android:text="No tengo cuenta"
-        android:textColor="@color/purple_700"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />;
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btnNoTengoCuenta"
+            android:onClick="aRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Registrarse"
+            app:backgroundTint="@null"
+            android:background="@drawable/custom_button" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
