@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                         FirebaseUser user = auth.getCurrentUser();
                         Toast.makeText(getApplicationContext(), "Datos correctos", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(getApplicationContext(),GruposActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
 
                         startActivity(intent);
 
