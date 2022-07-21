@@ -1,4 +1,4 @@
-package com.example.primerproyectogrupalcompmovil;
+package com.example.primerproyectogrupalcompmovil.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.primerproyectogrupalcompmovil.GruposActivity;
+import com.example.primerproyectogrupalcompmovil.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -51,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                         FirebaseUser user = auth.getCurrentUser();
                         Toast.makeText(getApplicationContext(), "Datos correctos", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(getApplicationContext(),GruposActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), GruposActivity.class);
 
                         startActivity(intent);
 
