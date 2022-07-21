@@ -41,6 +41,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
     implementation 'androidx.appcompat:appcompat:1.6.0-alpha05'
     implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.firebase:firebase-firestore:24.2.0'
 
     runtimeOnly 'com.google.android.material:material:1.6.1'
 

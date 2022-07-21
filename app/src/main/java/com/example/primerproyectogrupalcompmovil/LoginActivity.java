@@ -11,15 +11,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmailLogin,etContrasenaLogin;
-    private FirebaseAuth auth;
+
+    public static FirebaseAuth auth;
+
+    String nombreUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +55,12 @@ public class LoginActivity extends AppCompatActivity {
                     if(task.isSuccessful())
                     {
                         FirebaseUser user = auth.getCurrentUser();
-                        Toast.makeText(getApplicationContext(), "Datos correctos", Toast.LENGTH_SHORT).show();
+
+                        String uuid = user.getUid();
 
                         Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
 
-                        startActivity(intent);
+                        obtenerNombreUsuario(etEmailLogin.getText().toString());
 
                     }
                     else{
@@ -68,7 +77,33 @@ public class LoginActivity extends AppCompatActivity {
                     .show();
         }
 
+    }
 
+    public void obtenerNombreUsuario(String email)
+    {
+
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("usuario")
+                .whereEqualTo("email",email)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for(QueryDocumentSnapshot doc : task.getResult()){
+                            nombreUsuario = doc.get("nombre").toString();
+
+                            Intent intent = new Intent(getApplicationContext(),GruposActivity.class);
+                            intent.putExtra("email",etEmailLogin.getText().toString());
+                            intent.putExtra("nombreUsuario",nombreUsuario);
+                            startActivity(intent);
+
+                        }
+
+                    }
+                });
 
 
     }
