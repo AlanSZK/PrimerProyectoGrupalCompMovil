@@ -1,6 +1,7 @@
 package com.example.primerproyectogrupalcompmovil;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -49,7 +50,7 @@ public class GruposActivity extends AppCompatActivity {
         setTitle("Grupos de "+nombreUsuario);
 
         setContentView(R.layout.activity_grupos);
-
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ActionBarColor)));
 
         grupos = obtenerListaGrupos();
         rvGrupos = findViewById(R.id.rvGrupos);
