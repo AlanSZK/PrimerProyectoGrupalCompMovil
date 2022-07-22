@@ -3,6 +3,7 @@ package com.example.primerproyectogrupalcompmovil;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,6 +48,7 @@ public class SignupActivity extends AppCompatActivity {
         etUsuario = findViewById(R.id.etUsuario);
 
         setTitle("Registrarse");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ActionBarColor)));
 
 
     }

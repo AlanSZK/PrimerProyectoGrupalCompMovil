@@ -7,14 +7,16 @@
         <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/drawable/button_rounded_border.xml" value="0.303" />
         <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/drawable/custom_button.xml" value="0.303" />
         <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/drawable/custom_chat.xml" value="0.197" />
+        <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/drawable/custom_grupo.xml" value="0.197" />
+        <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/drawable/custom_nuevogrupo.xml" value="0.17" />
+        <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
+        <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/activity_grupos.xml" value="0.36666666666666664" />
         <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/activity_nuevo_grupo.xml" value="0.36666666666666664" />
         <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/layout_checkbox.xml" value="0.21331521739130435" />
+        <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/layout_grupo.xml" value="0.21331521739130435" />
         <entry key="..\:/Proyecto/ProyectoGrupalCompMovil/app/src/main/res/layout/layout_mensaje.xml" value="0.33" />
-        <entry key="..\:/Users/alans/AndroidStudioProjects/PrimerProyectoGrupalCompMovil/app/src/main/res/layout/activity_chat.xml" value="0.14010416666666667" />
-        <entry key="..\:/Users/alans/AndroidStudioProjects/PrimerProyectoGrupalCompMovil/app/src/main/res/layout/activity_grupos.xml" value="0.12590579710144928" />
-        <entry key="..\:/Users/alans/AndroidStudioProjects/PrimerProyectoGrupalCompMovil/app/src/main/res/layout/chat_custom_bar.xml" value="0.14010416666666667" />
-        <entry key="..\:/Users/alans/AndroidStudioProjects/PrimerProyectoGrupalCompMovil/app/src/main/res/menu/menu_activity_grupos.xml" value="0.18796296296296297" />
       </map>
     </option>
   </component>

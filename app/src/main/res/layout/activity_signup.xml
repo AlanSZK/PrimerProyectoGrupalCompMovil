@@ -9,6 +9,17 @@
     android:background="@color/white"
     tools:visibility="visible">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="450dp"
+        android:layout_height="800dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/fondo_login"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,6 +38,9 @@
             android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="Email"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -36,6 +50,9 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:layout_marginBottom="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:hint="Nombre de usuario" />
 
         <EditText
@@ -44,6 +61,9 @@
             android:layout_height="48dp"
             android:ems="10"
             android:hint="Contraseña"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:inputType="textPassword" />
 
         <Button
@@ -52,6 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="registrar"
-            android:text="Registrar" />
+            android:text="Registrar"
+            app:backgroundTint="@null"
+            android:background="@drawable/custom_button"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
