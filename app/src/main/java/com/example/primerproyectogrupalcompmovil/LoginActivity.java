@@ -36,9 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         etEmailLogin = findViewById(R.id.etEmailLogin);
         etContrasenaLogin = findViewById(R.id.etContrasenaLogin);
-
-        etEmailLogin.setText("alan.slazakc@utem.cl");
-        etContrasenaLogin.setText("alan1234");
+        
 
     }
 
