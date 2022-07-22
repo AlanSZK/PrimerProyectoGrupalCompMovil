@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/etInput"
-            android:layout_width="325dp"
+            android:layout_width="269dp"
             android:layout_height="56dp"
             android:backgroundTint="@color/white"
             android:hint="Escribir mensaje"
@@ -45,7 +45,20 @@
             android:textColorHint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
+            android:id="@+id/btnFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_marginRight="5dp"
+            android:onClick="tomarFoto"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_camera"
+            tools:ignore="OnClick" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnEnviar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

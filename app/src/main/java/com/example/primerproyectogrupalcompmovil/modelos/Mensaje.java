@@ -11,16 +11,25 @@ public class Mensaje {
     private String fecha;
     private String texto;
 
-    public Mensaje(String docId, String nombre, String texto) {
+
+
+    private String url;
+
+
+
+    public Mensaje(String docId, String nombre, String texto, String url) {
         this.docId = docId;
         this.nombre = nombre;
         this.texto = texto;
+        this.url = url;
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         this.fecha = formatter.format(date);
 
     }
+
+
     public String getDocId() {
         return docId;
     }
@@ -51,6 +60,12 @@ public class Mensaje {
         this.texto = texto;
     }
 
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
     @Override
     public String toString() {
         return "mensaje{" +
