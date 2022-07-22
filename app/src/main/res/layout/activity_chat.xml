@@ -35,13 +35,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/etInput"
             android:layout_width="325dp"
             android:layout_height="56dp"
-            android:textColorHint="@color/white"
             android:backgroundTint="@color/white"
+            android:hint="Escribir mensaje"
             android:textColor="@color/white"
-            android:hint="Escribir mensaje" />
+            android:textColorHint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton2"
@@ -50,6 +51,7 @@
             android:layout_weight="1"
             android:clickable="true"
             android:visibility="visible"
+            android:onClick="enviarMensaje"
             app:srcCompat="@android:drawable/ic_menu_send" />
 
     </LinearLayout>

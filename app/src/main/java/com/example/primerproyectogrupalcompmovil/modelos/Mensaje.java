@@ -5,11 +5,14 @@ import java.util.Date;
 
 public class Mensaje {
 
+
+    private String docId;
     private String nombre;
     private String fecha;
     private String texto;
 
-    public Mensaje(String nombre, String texto) {
+    public Mensaje(String docId, String nombre, String texto) {
+        this.docId = docId;
         this.nombre = nombre;
         this.texto = texto;
 
@@ -18,7 +21,12 @@ public class Mensaje {
         this.fecha = formatter.format(date);
 
     }
-
+    public String getDocId() {
+        return docId;
+    }
+    public void setDocId(String docId) {
+        this.docId = docId;
+    }
     public String getNombre() {
         return nombre;
     }
