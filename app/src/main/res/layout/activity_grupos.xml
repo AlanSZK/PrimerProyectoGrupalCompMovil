@@ -6,10 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".GruposActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="450dp"
+        android:layout_height="800dp"
+        android:background="@drawable/fondo_grupo1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvGrupos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
