@@ -5,6 +5,7 @@
         android:id="@+id/action_agregar_grupo"
         android:icon="@drawable/nicepng_group_icon_png_442930"
         android:title="Agregar grupo"
+        android:iconTint="@color/white"
         app:showAsAction="always"/>
 
 </menu>

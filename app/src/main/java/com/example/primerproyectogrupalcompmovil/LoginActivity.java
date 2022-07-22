@@ -33,6 +33,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        etEmailLogin = findViewById(R.id.etEmailLogin);
+        etContrasenaLogin = findViewById(R.id.etContrasenaLogin);
+
+        etEmailLogin.setText("alan.slazakc@utem.cl");
+        etContrasenaLogin.setText("alan1234");
+
     }
 
     public void aRegistrar(View view) {
@@ -41,10 +48,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void ingresar(View view) {
-        etEmailLogin = findViewById(R.id.etEmailLogin);
-        etContrasenaLogin = findViewById(R.id.etContrasenaLogin);
-
-
 
         if(!etEmailLogin.getText().toString().isEmpty()&&!etContrasenaLogin.getText().toString().isEmpty()){
             auth = FirebaseAuth.getInstance();

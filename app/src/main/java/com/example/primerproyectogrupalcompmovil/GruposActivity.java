@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GruposActivity extends AppCompatActivity {
+public class GruposActivity extends AppCompatActivity  {
 
     RecyclerView rvGrupos;
     String email;
@@ -42,6 +43,8 @@ public class GruposActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        grupos = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
         email = extras.getString("email");
@@ -57,9 +60,22 @@ public class GruposActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvGrupos.setLayoutManager(linearLayoutManager);
         adaptador = new AdaptadorGrupo();
+
+        adaptador.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                String nombreGrupo = grupos.get(rvGrupos.getChildAdapterPosition(view));
+                Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
+                intent.putExtra("nombreGrupo",nombreGrupo);
+                intent.putExtra("nombreUsuario",nombreUsuario);
+                startActivity(intent);
+
+            }
+        });
+
         rvGrupos.setAdapter(adaptador);
-
-
 
 
     }
@@ -78,6 +94,7 @@ public class GruposActivity extends AppCompatActivity {
             case R.id.action_agregar_grupo:
                 Intent intent = new Intent(getApplicationContext(),NuevoGrupoActivity.class);
                 intent.putExtra("email",email);
+
                 startActivity(intent);
             default:
                 break;
@@ -87,12 +104,21 @@ public class GruposActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class AdaptadorGrupo extends RecyclerView.Adapter<AdaptadorGrupo.AdaptadorGrupoHolder>{
+    private class AdaptadorGrupo extends RecyclerView.Adapter<AdaptadorGrupo.AdaptadorGrupoHolder> implements View.OnClickListener {
+
+        private View.OnClickListener listener;
+
 
         @NonNull
         @Override
         public AdaptadorGrupo.AdaptadorGrupoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new AdaptadorGrupoHolder(getLayoutInflater().inflate(R.layout.layout_grupo,parent,false));
+
+
+            View view = getLayoutInflater().inflate(R.layout.layout_grupo,parent,false);
+            view.setOnClickListener(this);
+
+            return new AdaptadorGrupoHolder(view);
+
         }
 
         @Override
@@ -103,6 +129,17 @@ public class GruposActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return grupos.size();
+        }
+
+        public void setOnClickListener(View.OnClickListener listener){
+            this.listener = listener;
+        }
+
+        @Override
+        public void onClick(View view){
+            if(listener!=null){
+                listener.onClick(view);
+            }
         }
 
         public class AdaptadorGrupoHolder extends RecyclerView.ViewHolder {
